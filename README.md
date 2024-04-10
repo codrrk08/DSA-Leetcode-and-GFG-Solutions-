@@ -1,2 +1,2 @@
-# 100DAYSOFCODE
-My 100 days of Code Challenge.
+# DSA QUESTION BANK
+This repository has the solutions to all the questions I've solved on Leetcode and GeeksForGeeks.
