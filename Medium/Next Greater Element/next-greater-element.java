@@ -1,0 +1,72 @@
+//{ Driver Code Starts
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+    
+	public static void main (String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int t = Integer.parseInt(br.readLine().trim());
+		while(t-->0){
+		    int n = Integer.parseInt(br.readLine().trim());
+		    String inputLine[] = br.readLine().trim().split(" ");
+		    long[] arr = new long[n];
+		    for(int i=0; i<n; i++)arr[i]=Long.parseLong(inputLine[i]);
+		    long[] res = new Solution().nextLargerElement(arr, n);
+		    for (int i = 0; i < n; i++) 
+		        System.out.print(res[i] + " ");
+		    System.out.println();
+		}
+	}
+}
+
+
+
+
+// } Driver Code Ends
+
+
+class Solution
+{
+    //Function to find the next greater element for each element of the array.
+    public static long[] nextLargerElement(long[] arr, int n)
+    { 
+    //   Stack<Long> st = new Stack<>();
+    //   for(long num:arr){
+    //         st.push(num);
+    //   } 
+    //   long ans[] = new long[n];
+    //   for(int i = 0;i<n;i++){
+    //         int index = st.indexOf(arr[i]);
+    //         int f=0;
+    //         for(int j = index+1;j<n;j++){
+    //             if(arr[j]>arr[i]){
+    //                 ans[i]=arr[j];
+    //                 f=1;
+    //                 break;
+    //             }
+    //             else
+    //             continue;
+    //         }
+    //         if(f!=1)
+    //         ans[i]=-1;
+    //     }
+    //     return ans;
+             Stack<Integer> s=new Stack<Integer>();
+            long[] ans=new long[arr.length];
+            Arrays.fill(ans,-1);
+            for(int i=0; i<arr.length; i++){
+                while(!s.isEmpty() && (arr[s.peek()]<arr[i])){
+                    ans[s.peek()]=arr[i];
+                    s.pop();
+                }
+                
+                s.push(i);
+            }
+            return ans;
+        
+    } 
+}
