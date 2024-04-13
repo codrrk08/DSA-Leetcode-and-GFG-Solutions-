@@ -1,12 +1,14 @@
 class MyQueue {
-    Stack<Integer> st1 = new Stack<>();
-    Stack<Integer> st2 = new Stack<>();
+    Stack<Integer> st1;
+    Stack<Integer> st2;
 
 
     public MyQueue() {
-        
+        st1 = new Stack<>();
+        st2 = new Stack<>();
     }
-    
+
+    //remove efficient 
     public void push(int x) {
         if(st1.isEmpty())
         st1.push(x);
