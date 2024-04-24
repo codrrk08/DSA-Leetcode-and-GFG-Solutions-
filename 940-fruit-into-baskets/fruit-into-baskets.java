@@ -10,12 +10,17 @@ class Solution {
                 maxfruit = Math.max(maxfruit,r-l+1);
             }
             else{
-                while(hm.size()>2){
-                    hm.put(fruits[l],hm.get(fruits[l])-1);
-                    if(hm.get(fruits[l])==0)
-                    hm.remove(fruits[l]);
-                    l++;
-                }
+                // while(hm.size()>2){
+                //     hm.put(fruits[l],hm.get(fruits[l])-1);
+                //     if(hm.get(fruits[l])==0)
+                //     hm.remove(fruits[l]);
+                //     l++;
+                // }
+                hm.put(fruits[l],hm.get(fruits[l])-1);
+                if(hm.get(fruits[l])==0)
+                hm.remove(fruits[l]);
+                l++;
+
             }
             r++;
         }
