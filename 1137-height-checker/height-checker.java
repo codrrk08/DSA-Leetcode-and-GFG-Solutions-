@@ -1,12 +1,23 @@
 class Solution {
     public int heightChecker(int[] heights) {
-        int copy[] = heights.clone();
-        Arrays.sort(copy);
-        int count=0;
-        for(int i =0 ;i<heights.length;i++){
-            if(copy[i]!=heights[i])
-            count++;
+
+        int arr[] = new int[heights.length];
+        int i=0;
+        for(int num: heights)
+        {
+            arr[i]= num;
+            i++;
         }
-        return count;
+        Arrays.sort(arr);
+        int c=0;
+        for(i = 0;i<heights.length;i++)
+        {
+            if(heights[i]!=arr[i])
+            c++;
+        }
+        return c;
+
+
+        
     }
 }
