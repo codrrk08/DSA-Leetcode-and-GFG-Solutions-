@@ -14,25 +14,27 @@
  * }
  */
 class Solution {
-    // public TreeNode answer(TreeNode root,int sum){
-    //     if(root!=null){
-    //         answer(root.right,sum);
-    //         sum+=root.val;
-    //         root.val = sum;
-    //         answer(root.left,sum);
-    //     }
-    //     return root;
-    // }
     int sum = 0;
-    public TreeNode bstToGst(TreeNode root) {
-        // return answer(root,0);
-        if(root!=null){
-            bstToGst(root.right);
-            sum+=root.val;
-            root.val = sum;
-            bstToGst(root.left);
+    public void answer(TreeNode root){
+        if(root==null){
+           return;
         }
+        answer(root.right);
+        sum+=root.val;
+        root.val = sum;
+        answer(root.left);
+    }
+    public TreeNode bstToGst(TreeNode root) {
+        // int sum = 0;
+        answer(root);
         return root;
+        // if(root!=null){
+        //     bstToGst(root.right);
+        //     sum+=root.val;
+        //     root.val = sum;
+        //     bstToGst(root.left);
+        // }
+        // return root;
         
 
 
