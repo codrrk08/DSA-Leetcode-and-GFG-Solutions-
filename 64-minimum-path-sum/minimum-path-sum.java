@@ -4,7 +4,7 @@ class Solution {
         return grid[i][j];
         
         if(i>m-1 || j>n-1)
-        return (int)1e8;
+        return (int)1000000;
         
         if(dp[i][j]!=-1)
         return dp[i][j];
