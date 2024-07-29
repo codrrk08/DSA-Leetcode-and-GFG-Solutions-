@@ -1,13 +1,13 @@
 class Solution {
     public int helper(String s,String t,int i,int j,int dp[][]){
-        if(i<0)
-        return j+1;
-        if(j<0)
-        return i+1;
+        if(i==0)
+        return j;
+        if(j==0)
+        return i;
 
         if(dp[i][j]!=-1)
         return dp[i][j];
-        if(s.charAt(i)!=t.charAt(j)){
+        if(s.charAt(i-1)!=t.charAt(j-1)){
             return dp[i][j] = 1 + Math.min(helper(s,t,i-1,j,dp),Math.min(helper(s,t,i,j-1,dp),helper(s,t,i-1,j-1,dp)));
         }
         return dp[i][j] = helper(s,t,i-1,j-1,dp);
@@ -20,7 +20,7 @@ class Solution {
             Arrays.fill(row,-1);
         }
 
-        return helper(word1,word2,n-1,m-1,dp);
+        return helper(word1,word2,n,m,dp);
 
     }
 }
