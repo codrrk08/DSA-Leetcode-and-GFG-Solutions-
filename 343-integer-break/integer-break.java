@@ -2,7 +2,7 @@ class Solution {
     public int helper(int arr[],int sum,int index){
         if(sum==0)
         return 1;
-        if(index<=0)
+        if(index==0)
         return 1;
 
         int notPick = helper(arr,sum,index-1);
@@ -10,8 +10,6 @@ class Solution {
         if(arr[index-1]<=sum){
             pick = arr[index-1]*helper(arr,sum-arr[index-1],index);
         }
-        // else
-        // notPick = arr[index]*helper(arr,sum-arr[index],index-1);
 
         return Math.max(pick,notPick);
     }
