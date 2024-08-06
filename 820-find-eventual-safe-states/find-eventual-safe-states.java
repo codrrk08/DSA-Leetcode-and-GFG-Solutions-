@@ -1,24 +1,4 @@
 class Solution {
-    // public boolean dfs(ArrayList<ArrayList<Integer>> adj,int index,int term[],int vis[]){
-
-    //     if(adj.get(index).isEmpty()){
-    //         // term[index] = 1;
-    //         return true;
-    //     }
-    //     vis[index] = 1;
-    //     boolean ans = false;
-    //     for(int n:adj.get(index)){
-    //         if(vis[n]!=1){
-    //             ans = dfs(adj,n,term,vis);
-    //             if(ans)
-    //             term[n] = 1;
-    //         }
-    //         else if(term[n]==1){
-    //             ans = true;
-    //         }
-    //     }
-    //     return ans;
-    // }
     private boolean dfsCheck(int node, ArrayList<ArrayList<Integer>> adj, int vis[], 
     int pathVis[], int check[]) {
         vis[node] = 1;
@@ -70,5 +50,4 @@ class Solution {
         }
         return safeNodes;
     }
-    
 }
