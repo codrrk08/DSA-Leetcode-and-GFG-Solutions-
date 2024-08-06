@@ -13,16 +13,16 @@ class Solution {
         int count = 8;
         int ans = 0;
         int mul = 1;
-        int flag = 0;
+        // int flag = 0;
         for(int i = list.size()-1;i>=0;i--){
             count--;
             if(count<0){
                 mul++;
-                flag++;
-                if(flag!=3)
+                // flag++;
+                // if(flag!=3)
                 count = 7;
-                else
-                count=1;
+                // else
+                // count=1;
             }
             ans+=list.get(i)*mul;
         }
