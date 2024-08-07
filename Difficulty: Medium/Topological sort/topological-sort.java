@@ -61,30 +61,60 @@ class Main {
 class Solution
 {
     //Function to return list containing vertices in Topological order. 
-    static void dfs(int index,int vis[],ArrayList<ArrayList<Integer>> adj,Stack<Integer> st){
+    // static void dfs(int index,int vis[],ArrayList<ArrayList<Integer>> adj,Stack<Integer> st){
         
-        vis[index] = 1;
-        for(int n:adj.get(index)){
-            if(vis[n]==0){
-                dfs(n,vis,adj,st);
-            }
-        }
-        st.push(index);
-    }
+    //     vis[index] = 1;
+    //     for(int n:adj.get(index)){
+    //         if(vis[n]==0){
+    //             dfs(n,vis,adj,st);
+    //         }
+    //     }
+    //     st.push(index);
+    // }
     static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
     {
-        int vis[] = new int[V];
-        Stack<Integer> st = new Stack<>();
+        // int vis[] = new int[V];
+        // Stack<Integer> st = new Stack<>();
+        // for(int i = 0;i<V;i++){
+        //     if(vis[i]!=1){
+        //         dfs(i,vis,adj,st);
+        //     }
+        // }
+        // int ans[] = new int[V];
+        // int i = 0;
+        // while(!st.isEmpty()){
+        //     ans[i] = st.pop();
+        //     i++;
+        // }
+        // return ans;
+        Queue<Integer> q = new LinkedList<>();
+        int indegree[] = new int[V];
+        
         for(int i = 0;i<V;i++){
-            if(vis[i]!=1){
-                dfs(i,vis,adj,st);
+            for(int n:adj.get(i)){
+                indegree[n]++;
             }
         }
+        for(int i = 0;i<V;i++){
+            if(indegree[i]==0)
+            q.offer(i);
+        }
+        
         int ans[] = new int[V];
-        int i = 0;
-        while(!st.isEmpty()){
-            ans[i] = st.pop();
-            i++;
+        ArrayList<Integer> list = new ArrayList<>();
+        int index =0 ;
+        while(!q.isEmpty()){
+            int node = q.poll();
+            list.add(node);
+            for(int n:adj.get(node)){
+                indegree[n]--;
+                if(indegree[n]==0)
+                q.offer(n);
+            }
+            // index++;
+        }
+        for(int i = 0;i<V;i++){
+            ans[i] = list.get(i);
         }
         return ans;
     }
