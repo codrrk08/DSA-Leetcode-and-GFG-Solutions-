@@ -30,23 +30,33 @@ class Solution {
         // // List<String> current = new ArrayList<>();
         // helper(words, groups, -1, 0, new ArrayList<>(), result);
         // return result;
+        // List<String> ans = new ArrayList<>();
+        // for(int i = 0;i<words.length;i++){
+        //     int prev = -1;
+        //     List<String> curr = new ArrayList<>();
+        //     for(int j =i ;j<words.length;j++){
+        //         if(prev==-1)
+        //         curr.add(words[i]);
+        //         else if(groups[prev]!=groups[j]){
+        //             curr.add(words[j]);
+        //         }
+        //         prev = j;
+        //     }
+        //     if(curr.size()>ans.size()){
+        //         ans.clear();
+        //         ans.addAll(curr);
+        //     }
+        // }
+        // return ans;List<String> ans = new ArrayList<>();
+        int n = words.length;
         List<String> ans = new ArrayList<>();
-        for(int i = 0;i<words.length;i++){
-            int prev = -1;
-            List<String> curr = new ArrayList<>();
-            for(int j =i ;j<words.length;j++){
-                if(prev==-1)
-                curr.add(words[i]);
-                else if(groups[prev]!=groups[j]){
-                    curr.add(words[j]);
-                }
-                prev = j;
-            }
-            if(curr.size()>ans.size()){
-                ans.clear();
-                ans.addAll(curr);
+
+        for(int i = 0; i < n; i++){
+            if(i == 0 || groups[i] != groups[i-1]){
+                ans.add(words[i]);
             }
         }
+
         return ans;
         
     }
