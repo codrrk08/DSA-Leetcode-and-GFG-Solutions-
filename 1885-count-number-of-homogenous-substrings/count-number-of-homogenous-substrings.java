@@ -1,38 +1,32 @@
 class Solution {
-    public long homo(String s,int k){
+    public long homo(String s){
         int i = 0;
         int j = 0 ;
         int n = s.length() ; 
-        int[] charFreq = new int[26] ; 
-        int dist_count = 0 ;
+        HashMap<Character,Integer> hm = new HashMap<>();
         long ans = 0 ;
-        long count = 0;
         while(j<n){
-            charFreq[s.charAt(j)-'a']++;
-            if(charFreq[s.charAt(j)-'a']==1){ //Distinct Character
-                dist_count++;
-            }
-            
-            //Decreasing Window Size 
-            while(dist_count>k){
-                charFreq[s.charAt(i)-'a']--;
-                if(charFreq[s.charAt(i)-'a']==0){
-                    dist_count--;
+            char ch = s.charAt(j);
+            hm.put(ch,hm.getOrDefault(ch,0)+1);
+            while(hm.size()>1){
+                char startChar = s.charAt(i);
+                hm.put(startChar, hm.get(startChar) - 1);
+                if (hm.get(startChar) == 0) {
+                    hm.remove(startChar);
                 }
                 i++;
-            }
-            // if(dist_count==k)
-            // count++;
+            } 
+            ans+= (j-i+1) %(int)(1e9+7);
             j++;
-            ans+=(j-i+1)%(int)(1e9+7); 
         }
-        // System.out.println(count);
-        return ans%(int)(1e9+7) ;
+        return ans%(int)(1e9+7);
+            
     }
     public int countHomogenous(String s) {
-        int ans = (int)homo(s,1)-(int)homo(s,0);
-        if(ans<0)
-        return 999949973;
-        return ans;
+        // int ans = (int)homo(s,1)-(int)homo(s,0);
+        // // if(ans<0)
+        // return 999949973;
+        return (int)homo(s);
+        // return ans;
     }
 }
