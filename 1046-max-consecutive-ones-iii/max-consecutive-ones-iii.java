@@ -37,7 +37,7 @@ class Solution {
 		while(j<n){
 			if(nums[j]==0) k--;
 
-			while(k < 0){
+			if (k < 0){
                 if (nums[i] == 0) k++;
                 i++;
             }
