@@ -42,7 +42,6 @@ class Solution {
             
         // }
         // int n = s.length();
-        // boolean dp[][] = new boolean[n][n];
         // // for(int row[]:dp){
         // //     Arrays.fill(row,-1);
         // // }
@@ -50,15 +49,22 @@ class Solution {
         // return solve(s, 0, s.length() - 1,dp);
         int n = s.length();
         String ans = "";
-        for(int i = 0;i<n;i++){
+        boolean dp[][] = new boolean[n][n];
+        for(int i = n-1;i>=0;i--){
             for(int j = i;j<n;j++){
                 // if(j-i+1<ans.length())
                 // continue;
-                if(isPalindrome(i,j,s)){
-                    if(j-i+1>ans.length()){
-                        ans = s.substring(i,j+1);
+                if(j-i+1<3)
+                dp[i][j] = s.charAt(i)==s.charAt(j);
+                else{
+                    if(s.charAt(i)==s.charAt(j)){
+                        dp[i][j] = dp[i+1][j-1];
                     }
+                    else
+                    dp[i][j] = false;
                 }
+                if(dp[i][j] && j-i+1>ans.length())
+                ans = s.substring(i,j+1);
             }
         }
         return ans;
