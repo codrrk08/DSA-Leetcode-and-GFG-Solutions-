@@ -49,12 +49,11 @@ class Solution {
 
         // return solve(s, 0, s.length() - 1,dp);
         int n = s.length();
-        // int max = 0;
         String ans = "";
         for(int i = 0;i<n;i++){
             for(int j = i;j<n;j++){
-                if(j-i+1<ans.length())
-                continue;
+                // if(j-i+1<ans.length())
+                // continue;
                 if(isPalindrome(i,j,s)){
                     if(j-i+1>ans.length()){
                         ans = s.substring(i,j+1);
