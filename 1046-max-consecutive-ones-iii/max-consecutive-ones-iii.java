@@ -30,30 +30,19 @@ class Solution {
         //     r++;
         // }
         // return maxlen;
-        int copy = k;
 		int max  =0;
 		int i = 0;
 		int j = 0;
         int n = nums.length;
 		while(j<n){
-			if(nums[j]==1)
-			j++;
+			if(nums[j]==0) k--;
 
-			else if(nums[j]==0 && copy>0){
-				copy--;
-				j++;
-			}
-			else if(nums[j]==0 && copy==0){
-				// copy = k;
-				// max = j-i;
-				// i++;
-				while (nums[i] == 1) {
-                	i++;
-            	}
-				i++;
-				copy++;
-       		}
-        	max = Math.max(max, j - i);
+			while(k < 0){
+                if (nums[i] == 0) k++;
+                i++;
+            }
+        	max = Math.max(max, j - i +1);
+            j++;
 		}
 		return max;
         
