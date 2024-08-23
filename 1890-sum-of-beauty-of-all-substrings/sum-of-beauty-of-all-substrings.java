@@ -12,10 +12,10 @@ class Solution {
                 int min = Integer.MAX_VALUE;
                 int max = 0;
                 for(int val:hm.values()){
-                    if(val>0){
+                    // if(val>0){
                         min = Math.min(min,val);
                         max = Math.max(max,val);
-                    }
+                    // }
                 }
                 sum+=max-min;
             }
