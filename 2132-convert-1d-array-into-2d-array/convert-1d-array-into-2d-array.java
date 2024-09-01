@@ -16,8 +16,8 @@ class Solution {
                 col++;
                 // row++;
             }
-            else
-            return new int[][]{};
+            // else
+            // return new int[][]{};
         }
         return ans;
         
