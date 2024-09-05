@@ -6,9 +6,11 @@ class Solution {
         for(int x:rolls){
             sumM+=x;
         }
-        if(sumMN<sumM)
-        return new int[]{};
         int sumN = sumMN-sumM;
+
+        if(sumN<n || sumN>n*6)
+        return new int[]{};
+        
         int i = 0;
         int ans[] = new int[n];
         
@@ -21,9 +23,9 @@ class Solution {
             i++;
             n--;
         }
-        if(sumN>0)
-        return new int[]{};
-        else
+        // if(sumN>0)
+        // return new int[]{};
+        // else
         return ans;
     }
 }
