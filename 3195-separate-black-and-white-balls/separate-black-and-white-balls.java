@@ -1,25 +1,23 @@
-class Solution {
+class Solution{
     public long minimumSteps(String s) {
         long sum = 0;
-        int i =0 ;
         long countZero = 0;
         long countOne = 0;
-        while(i<=s.length()){
-            if(i==s.length()){
-                sum+=countZero*countOne;
-                break;
-            }
+
+        for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
-            if(ch=='1'){
-                sum+=countZero*countOne;
-                countZero = 0;
-                countOne++;
+
+            if (ch == '1') {
+                sum += countZero * countOne;
+                countZero = 0; 
+                countOne++;   
+            } else if (ch == '0' && i != 0) {
+                countZero++;    
             }
-            else if(ch=='0' && i!=0){
-                countZero++;
-            }
-            i++;
         }
+        
+        sum += countZero * countOne;
+
         return sum;
     }
 }
