@@ -11,6 +11,11 @@ class Solution {
         if(sb.toString().equals(s)){
             return num;
         }
+        HashMap<Character,Integer> hm = new HashMap<>();
+        for(int i = 0;i<s.length();i++){
+            char ch = s.charAt(i);
+            hm.put(ch,i);
+        }
         int index = -1;
         int i = 0;
         for(i = 0;i<sb.length();i++){
@@ -18,7 +23,7 @@ class Solution {
                 continue;
             }
             else{
-                index = s.lastIndexOf(sb.charAt(i));
+                index = hm.get(sb.charAt(i));
                 break;
             }
         }
